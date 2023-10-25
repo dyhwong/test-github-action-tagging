@@ -25,13 +25,7 @@ jobs:
 
       - name: Bump version and push tag
         id: tag_version
-        uses: mathieudutour/github-tag-action@fcfbdceb3093f6d85a3b194740f8c6cec632f4e2
+        uses: kimgault/github-tag-action@v2.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          release_branches: dist
-      - name: Create release
-        uses: ncipollo/release-action@6c75be85e571768fa31b40abf38de58ba0397db5
-        with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: dist
