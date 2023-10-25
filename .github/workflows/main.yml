@@ -14,6 +14,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Get uuid
+        id: uuid
+        run: |
+            echo "::set-output name=uuid::$(uuidgen)"
+
       - name: Build the package
         run: |
           git config user.name github-actions
@@ -22,3 +28,9 @@ jobs:
           git add README.md
           git commit -m "Build package $(date)"
           git push --force origin main:dist
+
+      - name: Tag
+        run: |
+          git checkout dist
+          git tag -a "${{ steps.uuid.outputs.uuid }}" -m "Tag build $(date)"
+          git push origin ${{ steps.uuid.outputs.uuid }}
