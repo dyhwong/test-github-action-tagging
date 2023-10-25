@@ -22,10 +22,5 @@ jobs:
           git add README.md
           git commit -m "Build package $(date)"
           git push --force origin main:dist
-
-      - name: Release
-        uses: K-Phoen/semver-release-action@master
-        with:
-          release_branch: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git tag -a "$(uuidgen)" -m "Build package $(date)"
+          git push --tags
