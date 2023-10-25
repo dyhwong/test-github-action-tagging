@@ -22,5 +22,3 @@ jobs:
           git add README.md
           git commit -m "Build package $(date)"
           git push --force origin main:dist
-          git tag -a "$(uuidgen)" -m "Build package $(date)"
-          git push --tags
