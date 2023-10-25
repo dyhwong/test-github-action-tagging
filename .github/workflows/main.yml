@@ -28,6 +28,7 @@ jobs:
         uses: mathieudutour/github-tag-action@fcfbdceb3093f6d85a3b194740f8c6cec632f4e2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_branches: dist
       - name: Create release
         uses: ncipollo/release-action@6c75be85e571768fa31b40abf38de58ba0397db5
         with:
